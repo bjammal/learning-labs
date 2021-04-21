@@ -1,0 +1,24 @@
+- name: Provision Windows Image
+  remote_user: packer
+  hosts: default
+  gather_facts: false
+  tasks:
+  - name: Create target directory
+    win_file:
+      path: C:\Temp\
+      state: directory
+      
+  - name: Download the 7-Zip package
+    win_get_url:
+      url: https://www.7-zip.org/a/7z1701-x64.msi
+      dest: C:\temp\7z.msi
+
+  - name: Ensure 7-Zip is installed via win_package
+    win_package:
+      path: C:\temp\7z.msi
+      state: present
+
+  - name: Touch a file (creates if not present, updates modification time if present)
+    ansible.windows.win_file:
+      path: C:\Temp\bilal.conf
+      state: touch

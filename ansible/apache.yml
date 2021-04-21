@@ -1,0 +1,19 @@
+- name: Provision Ubuntu Image
+  become: true
+  hosts: localhost
+  tasks:
+  - name: Install Apache Web Server
+    apt:
+      name: apache2
+      state: present
+
+  - name: Start Aapche
+    service:
+      name: apache2
+      state: started
+
+  - name: touch a file
+    ansible.builtin.file:
+      path: /etc/bilal.txt
+      state: touch
+
