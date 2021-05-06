@@ -80,7 +80,7 @@ Note that we are using **Ansible** to provision the images. The provisioner sect
 
 Other useful commands can include `packer fmt` and `packer validate`.
 
-## Using CI/CD
+### Using CI/CD
 After playing arround with Terraform, Packer, and Ansible, the time to automate everything has come. Using Jenkins, an image build and deploy can be instantiated automatically upon a git push. The repo contains a Jenkinsfile to automate the process of building an AWS AMI with Packer and launching an ec2 instance with Terraform.
 
 To test it, make sure that your Jenkins is configured correctly and you have a webhook, then simply make an update and push it upstream.
